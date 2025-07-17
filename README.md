@@ -78,7 +78,7 @@ npm run dev
 - **POST:**
 - **Descripción:** Crea un nuevo producto
 - **Body (JSON):**
-
+ 
 ```json
 { "name": "Nuevo Producto", "price": 777 }
 ```
@@ -86,4 +86,13 @@ npm run dev
 - **Respuesta Ejemplo:**
 
 ```json
-{ "id": 6, "name": "nuevo Producto", "price": 777 }
+{ "id": "RX3AHiW8agb4nPilR1BJ", "name": "Nuevo Producto", "price": 777 }
+```
+
+## Eliminar un producto 
+
+- **DELETE** `/products/:id`
+- **Descripcion:** Elimina un producto por su ID
+- **Parametros:**
+- `id`(path, requerido): ID del prodcuto a eliminar
+- **Respuesta:** 201 no Content

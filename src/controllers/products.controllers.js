@@ -15,17 +15,17 @@ export const getAllProducts = async (req,res) => {
     res.json(products);
 }
 
-export const searchProducts = (req,res) => {
+export const searchProducts = async (req,res) => {
     const { name } = req.query;
 
     if (!name) {
         return res.status(400).json({error: 'El nombre es requerido'})
     }
 
-    const products = Model.getAllProducts();
+    const products = await Model.getAllProducts();
 
-    const productsFiltered = products.filter(item =>
-         item.name.toLocaleUpperCase().includes(name.toLocaleUpperCase() )
+    const productsFiltered = products.filter((item) =>
+         item.name.toLowerCase().includes(name.toLowerCase() )
     );
 
     if(productsFiltered.length == 0){
@@ -53,3 +53,16 @@ export const createProduct = async (req, res) => {
 
     res.status(201).json(product);
 };
+
+export const deleteProduct = async  (req, res) => {
+    const {id} = req.params;
+
+    const deleted = await Model.deleteProduct(id);
+
+    if(!deleted){
+        return res.status(404).json({ error: "Producto no encontrado"});
+    }
+//Envia un 204 sin contenido para dar el ok del borrado
+    res.status(204).send();
+
+}

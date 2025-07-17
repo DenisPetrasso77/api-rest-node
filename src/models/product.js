@@ -1,7 +1,7 @@
 
 import {db} from "./firebase.js";
 
-import { collection, getDocs, doc, getDoc, addDoc } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc, addDoc, deleteDoc } from "firebase/firestore";
 
 const productsColletion = collection(db, "products");
 
@@ -31,5 +31,22 @@ try {
     return { id: docRef.id, ...data };
     } catch (error) {
         console.error(error)
+    }
+};
+
+export const deleteProduct = async (id) => {
+    try {
+        const productRef = doc(productsColletion, id);
+        const snapshop = await getDoc(productRef);
+
+        if (!snapshop.exists() ){
+            return false;
+        }
+
+        await deleteDoc(productRef);
+        return true;
+
+    } catch (error) { 
+        console.error(error);
     }
 };
