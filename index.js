@@ -1,13 +1,15 @@
 import express from "express";
 const app = express();
 
-// app.use((req, res, next) =>{
-//    res.json({ message: "Hola Middleware"});
-// });
+
 
 app.get('/', (req,res) => {
     res.json("Bienvenido a nuestra API REST !!!!")
 });
+
+import productsRouter from './src/routes/products.router.js';
+app.use('/api', productsRouter);
+
 
 import notFound from "./src/middlewares/not-found.js";
 app.use(notFound);
