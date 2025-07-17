@@ -1,40 +1,26 @@
-const products = [
-    {
-        id: 1,
-        name: "Camiseta Deportiva",
-        price: 150,
-        categories: ["ropa","deportes"], 
-    },
-    {
-        id: 2,
-        name: "Ropa Gym",
-        price: 100,
-        categories: ["Ropa","deportes"], 
-    },
-    {
-        id: 3,
-        name: "Mochila Escolar",
-        price: 350,
-        categories: ["mochila","escolar"], 
-    },
-    {
-        id: 4,
-        name: "Auriculares Bluetooth",
-        price: 800,
-        categories: ["tecnologia","audio"], 
-    },
-    {
-        id: 5,
-        name: "Botella Térmica",
-        price: 220,
-        categories: ["hogar","accesorios"], 
-    },
-];
 
-export const getAllProducts = () => {
-    return products;
-}
+import {db} from "./firebase.js";
 
-export const getProductsById = () => {
-    return products.find((item) => item.id == id);
-}
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+
+const productsColletion = collection(db, "products");
+
+export const getAllProducts = async () => {
+    try {
+        const snapshot = await getDocs(productsColletion);
+        return snapshot.docs.map((doc) => ( { id: doc.id, ...doc.data() }) );
+        
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const getProductById = async (id) => {
+    try {
+        const productRef = doc(productsColletion, id);
+        const snapshot = await getDoc(productRef);
+        return snapshot.exists() ? { id: snapshot.id, ...snapshot.data() } : null;
+    } catch (error) {
+        console.error(error);
+    }
+};
