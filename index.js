@@ -1,7 +1,7 @@
+import "dotenv/config";
 import express from "express";
+
 const app = express();
-
-
 
 app.get('/', (req,res) => {
     res.json("Bienvenido a nuestra API REST !!!!")
@@ -14,6 +14,6 @@ app.use('/api', productsRouter);
 import notFound from "./src/middlewares/not-found.js";
 app.use(notFound);
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
