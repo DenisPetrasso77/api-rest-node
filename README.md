@@ -71,3 +71,19 @@ npm run dev
 ```json
 [{"id": 1, "name": "Camiseta Deportiva", "price": 150 }]
 ```
+
+
+### Crear un producto
+
+- **POST:**
+- **Descripción:** Crea un nuevo producto
+- **Body (JSON):**
+
+```json
+{ "name": "Nuevo Producto", "price": 777 }
+```
+
+- **Respuesta Ejemplo:**
+
+```json
+{ "id": 6, "name": "nuevo Producto", "price": 777 }
