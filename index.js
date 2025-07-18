@@ -16,6 +16,7 @@ app.use('/api', productsRouter);
 import notFound from "./src/middlewares/not-found.js";
 app.use(notFound);
 
+
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
