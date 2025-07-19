@@ -1,19 +1,27 @@
-# API REST con Node.js y Firebase
+# API REST con Node.js, Express y Firebase
 
 ## Descripcion de la API
 
-API 
-REST se usa para gestionar productos desarrollados con Node.js y Express usando Firebase.
+API REST conNode.JS se usa para gestionar productos usando el servidor Express con Firebase.
+
+- Listado completo de productos
+- Búsqueda de productos por ID
+- Alta, modificación y eliminación de productos
+- Autenticación con Json WEB Token (JWT)
 
 ## Instalación
 
-1. Clonar el repositorio de Github
+1. Clonar el repositorio de Github: https://github.com/DenisPetrasso77/api-rest-node
+
+```bash
+git 
+cd api-rest-node
+```
 2. Instalar todas las dependencias necesarias para que la API funcione Correctamente:
 
 ```bash
 npm install
 ```
-
 
 3. Configurar variables de entorno:
 
@@ -94,5 +102,31 @@ npm run dev
 - **DELETE** `/products/:id`
 - **Descripcion:** Elimina un producto por su ID
 - **Parametros:**
-- `id`(path, requerido): ID del prodcuto a eliminar
-- **Respuesta:** 201 no Content
+- `id`(path, requerido): ID del producto a eliminar
+
+
+
+## Modificar un producto
+
+- **Modificar** `/products/:id`
+- **Descripcion:** Modifica un producto por su ID
+- **Parametros:**
+- `id`(path, requerido): ID del producto a modificar
+
+
+##  Tecnologías usadas en el proyecto
+
+- Node.js
+- Express.js
+- Firebase - Firestore
+- Json WEB Token (JWT)
+- Vercel
+
+## API en producción Vercel
+
+https://api-rest-node-mu.vercel.app/
+
+##  Autor de la API
+
+**Franco Denis Petrasso**  
+Correo: denispetrasso77@gmail.com  

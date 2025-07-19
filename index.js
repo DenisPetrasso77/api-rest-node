@@ -4,8 +4,9 @@ import cors from "cors";
 
 const app = express();
 
-//middleware global de body-parser para interpretar los body en formato JSON de las peticiones.
+//middleware global permite json
 app.use(express.json());
+//Permite origenes cruzados
 app.use(cors());
 
 app.get('/', (req,res) => {
@@ -18,10 +19,8 @@ app.use('/api', productsRouter);
 import authRouter from './src/routes/auth.router.js';
 app.use("/api/auth", authRouter);
 
-
 import notFound from "./src/middlewares/not-found.js";
 app.use(notFound);
-
 
 const PORT = process.env.PORT || 3001;
 
