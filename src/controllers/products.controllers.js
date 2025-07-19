@@ -1,10 +1,11 @@
-import * as Service from "../models/product.models.js";
+import * as Service from "../services/products.services.js";
 
+//ok
 export const getAllProducts = async (req,res) => {
    const products = await Service.getAllProducts();
    res.json(products);
 }
-//ok
+//NO
 export const searchProducts = async (req,res) => {
     const { name } = req.query;
 
@@ -57,7 +58,8 @@ export const deleteProduct = async  (req, res) => {
         return res.status(404).json({ error: "Producto no encontrado"});
     }
 
-    res.status(204).send();
+    res.status(200).json({ message: `Producto con ID ${id} eliminado correctamente` });
+
 } catch (error) {
     console.log(error);
     res.status(500).json({ message: "error al eliminar un producto"});

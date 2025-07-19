@@ -1,10 +1,12 @@
 import "dotenv/config";
 import express from "express";
+import cors from "cors";
 
 const app = express();
 
-//para leer req body
+//middleware global de body-parser para interpretar los body en formato JSON de las peticiones.
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (req,res) => {
     res.json("Bienvenido a nuestra API REST !!!!")
